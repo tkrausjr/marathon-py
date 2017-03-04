@@ -14,26 +14,27 @@ Copy the marathon-client.py file to the same directory as the script that will c
 
 ## Example
 
-	Calling the Library
+	### Calling the Library
 
 		import marathon-client
 
 
-	Initialization -
+	### Initialize a Marathon Connection Object -
 
 		new_marathon = marathon-client.Marathon(dcos_master,dcos_auth_token)
 
-	Get All Marathon Apps -
+	### Get All Marathon Apps -
 
 		apps = new_marathon.get_all_apps()
 
 
-	Get Marathon App Details -
+	### Get Marathon App Details -
 		marathon_app = '/dev/nginx01'
 		app_details = aws_marathon.get_app_details(marathon_app)
 
-	Scale Marathon App -
-		new_marathon.scale_app(marathon_app, autoscale_multiplier)
+	### Scale Marathon App -
+		new_marathon.scale_app(marathon_app, instances)
 
-
-	Add Marathon Application
+	### Add Marathon Application -
+		marathon_app_json_file = '/Users/tkraus/sandbox/marathon/12b-siege.json'
+		new_app = new_marathon.add_app(marathon_app_json_file)
