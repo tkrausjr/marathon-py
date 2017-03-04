@@ -13,10 +13,10 @@ userid = input('Enter the username for the DCOS cluster : ')
 password = input('Enter the password for the DCOS cluster : ')
 '''
 dcos_master = 'https://72.83.34.30'
-userid = 'justin'
-password = 'thisismypassword'
+userid = ''
+password = ''
 
-marathon_app_json = '/Users/tkraus/sandbox/marathon/0c-corpmenu-lb-BRIDGE.json'
+marathon_app_json = '/Users/tkraus/sandbox/marathon/12b-siege.json'
 
 ## Login to DCOS to retrieve an API TOKEN
 dcos_token = marathon.dcos_auth_login(dcos_master,userid,password)
