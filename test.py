@@ -13,8 +13,8 @@ userid = input('Enter the username for the DCOS cluster : ')
 password = input('Enter the password for the DCOS cluster : ')
 '''
 dcos_master = 'https://72.83.34.30'
-userid = ''
-password = ''
+userid = 'justin'
+password = 'thisismypassword'
 
 marathon_app_json = '/Users/tkraus/sandbox/marathon/12b-siege.json'
 
@@ -35,10 +35,11 @@ print ("The following apps exist in Marathon...", marathon_apps)
 print('-----------------------------')
 
 ## Get Marathon App Details Method - List Tasks & Agents for all Marathon Apps
-for app in marathon_apps:
-    app_details = new_marathon.get_app_details(app)
-    print('{}{}'.format("Marathon App details = ", app_details))
-    print('-----------------------------')
+if marathon_apps != None:
+    for app in marathon_apps:
+        app_details = new_marathon.get_app_details(app)
+        print('{}{}'.format("Marathon App details = ", app_details))
+        print('-----------------------------')
 
 new_app = new_marathon.add_app(marathon_app_json)
-print('-----------------------------')
+print('Marathon App ID is ' + new_app)

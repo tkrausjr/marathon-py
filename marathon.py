@@ -16,7 +16,7 @@ class marathon(object):
         response = requests.get(self.uri + '/service/marathon/v2/apps', headers=self.headers, verify=False).json()
         if response['apps'] ==[]:
             print ("No Apps found on Marathon")
-            sys.exit(1)
+            return None
         else:
             apps=[]
             for i in response['apps']:
@@ -29,6 +29,7 @@ class marathon(object):
         response = requests.get(self.uri + '/service/marathon/v2/apps/'+ marathon_app, headers=self.headers, verify=False).json()
         if (response['app']['tasks'] ==[]):
             print ('No task data on Marathon for App !', marathon_app)
+            return None
         else:
             app_instances = response['app']['instances']
             self.appinstances = app_instances
@@ -62,7 +63,7 @@ class marathon(object):
         response=requests.post('{}{}'.format(self.uri, '/service/marathon/v2/apps'), data=json_data, headers=self.headers,verify=False)
         print ('Request =', response.json())
         print ('Add Marathon App return status code =', response.status_code)
-        return response.status_code
+        return response.json()['id']
 
 
 def dcos_auth_login(dcos_master,userid,password):
